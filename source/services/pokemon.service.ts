@@ -1,8 +1,8 @@
-const logger = require('./logger');
+const logger = require('../logger');
 
 export class PokemonService {
     constructor() {
-        logger.debug('constructor');
+        logger.info('constructor');
     }
 
     public async getPokemonList() {

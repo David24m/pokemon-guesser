@@ -1,12 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
-const logger = require('./logger');
+const logger = require('../logger');
 import { PokemonService } from '../services/pokemon.service';
 
 const pokemonRouter = express.Router();
 
 const pokemonService = new PokemonService();
 
-pokemonRouter.get('/pokemonList', ( async (
+pokemonRouter.get('/pokemonlist', ( async (
     _req: Request,
     res: Response,
     next: NextFunction

@@ -1,20 +1,12 @@
-const logger = require('logger');
-// import app from './app';
+const logger = require('./logger');
 import http from 'http';
 import express, { Express } from 'express';
+import pokemonRouter from './routes/pokemon.router';
 
 
 const router: Express = express();
 
-// const port = process.env.PORT || 3000;
-
-// const startServer = async () => {
-//     app.listen(port, () => {
-//         logger.info(`listening on posrt ${port}`);
-//     });
-// };
-
-// startServer;
+router.use('/v1', pokemonRouter);
 
 const httpServer = http.createServer(router);
 const PORT: any = process.env.PORT ?? 3000;
