@@ -25,7 +25,14 @@ export class PokemonService {
         return randomPokemonList.splice(0, 4);
     }
 
+    public getPokemonNumber(url: any) {
+        const numberRegEx = /(\d+)\/$/;
+        return (url.match(numberRegEx) || [])[1];
+    }
+
     public getPokemonPicture({url}) {
-        
+        const pokemonNumber = this.getPokemonNumber(url);
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png`;
+    
     }
 }
