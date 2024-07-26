@@ -3,7 +3,7 @@ import configureServerlessExpress from '@vendia/serverless-express';
 import serverlessExpress from '@vendia/serverless-express';
 import type { Application } from 'express';
 import type { APIGatewayEvent, Context } from 'aws-lambda';
-const logger = require('./logger');
+const logger = require('logger');
 
 
 type App = Application;
@@ -12,7 +12,7 @@ let serverlessExpressHandler: any;
 
 const createLambdaHandler = (
     app: App,
-    setup: (event: APIGatewayEvent, context: Context) => Promise<void>
+    setup: (event: APIGatewayEvent, context: Context, callback: any) => Promise<void>
     ) => {
         let serverlessExpressLambdaHandler: ReturnType<
         typeof configureServerlessExpress
@@ -22,21 +22,23 @@ const createLambdaHandler = (
 
         const createServerlessExpressLambdaHanlder = async (
             event: APIGatewayEvent,
-            context: Context
+            context: Context,
+            callback: any
         ) => {
-            await setup(event, context);
+            await setup(event, context, callback);
             serverlessExpressLambdaHandler = configureServerlessExpress({ app });
         };
 
-        return async (event: unknown, context: Context) => {
+        return async (event: unknown, context: Context, callback: any) => {
             if(isColdStart()) {
                 await createServerlessExpressLambdaHanlder(
                     event as APIGatewayEvent,
-                    context
+                    context,
+                    callback
                 )
             }
     
-            return serverlessExpressLambdaHandler(event, context);
+            return serverlessExpressLambdaHandler(event, context, callback);
         
         };    
 };

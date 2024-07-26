@@ -16,7 +16,7 @@ export class PokemonService {
         const shuffled = unshuffledPokemon
           .map((value: any) => ({ value, sort: Math.random() }))
           .sort((a: any, b: any) => a.sort - b.sort)
-          .map(({ value }) => value);
+          .map(({ value }: any) => value);
         
         return shuffled;
       }
@@ -30,7 +30,7 @@ export class PokemonService {
         return (url.match(numberRegEx) || [])[1];
     }
 
-    public getPokemonPicture({url}) {
+    public getPokemonPicture({url}: any) {
         const pokemonNumber = this.getPokemonNumber(url);
         return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumber}.png`;
     

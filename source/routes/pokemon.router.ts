@@ -1,4 +1,4 @@
-import express, { NextFunction } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 const logger = require('./logger');
 import { PokemonService } from '../services/pokemon.service';
 
@@ -7,14 +7,15 @@ const pokemonRouter = express.Router();
 const pokemonService = new PokemonService();
 
 pokemonRouter.get('/pokemonList', ( async (
-    req: Request,
+    _req: Request,
     res: Response,
-    next: NextFunction) => {
+    next: NextFunction
+    ) => {
         logger.info('recieved request for pokemon list');
         try {
-            const result = pokemonService.getPokemonList()
+            const result = await pokemonService.getPokemonList()
 
-            return result;
+            return res.status(200).json(result);
         } catch (error) {
             return next(error);
         }

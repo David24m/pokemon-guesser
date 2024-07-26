@@ -1,10 +1,11 @@
 {
   "name": "pokemon_guesser",
   "version": "1.0.0",
-  "main": "source/server.ts",
+  "main": "source/index.ts",
   "scripts": {
     "dev": "nodemon source/server.ts",
-    "build": "rm -rf build/ && prettier --write source/ && tsc"
+    "build": "rm -rf build/ && prettier --write source/ && tsc",
+    "start": "ts-node-dev --inspect --respawn --files source/app.local.ts"
   },
   "author": "David Mulligan",
   "license": "ISC",
@@ -19,11 +20,12 @@
     "express": "^4.19.2",
     "logger": "^0.0.1",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2"
+    "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.5.4",
-    "@types/aws-lambda": "^8.10.114"
+    "@types/aws-lambda": "^8.10.114",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
