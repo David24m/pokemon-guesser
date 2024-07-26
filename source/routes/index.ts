@@ -1,5 +1,5 @@
 import express from 'express';
-import test from './test';
+import test from './pokemon.router';
 
 const router = express.Router();
 
