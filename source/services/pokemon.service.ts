@@ -11,4 +11,13 @@ export class PokemonService {
 
         return pokemon.results;
     }
+
+    public shuffledPokemon(unshuffledPokemon: any) {
+        const shuffled = unshuffledPokemon
+          .map((value: any) => ({ value, sort: Math.random() }))
+          .sort((a: any, b: any) => a.sort - b.sort)
+          .map(({ value }) => value);
+        
+        return shuffled;
+      }
 }
