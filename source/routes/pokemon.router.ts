@@ -13,7 +13,23 @@ pokemonRouter.get('/pokemonlist', ( async (
     ) => {
         logger.info('recieved request for pokemon list');
         try {
-            const result = await pokemonService.getPokemonList()
+            const pokemon = await pokemonService.getPokemonList()
+
+            const shuffledPokemonList = await pokemonService.shuffledPokemon(pokemon);
+
+            const fourPokemon = await pokemonService.getFourRandomPokemon(shuffledPokemonList);
+
+            const [ firstPokemon ] = fourPokemon;
+
+            const image = pokemonService.getPokemonPicture(firstPokemon)
+
+            const result = {
+                fourPokemon: pokemonService.shuffledPokemon(fourPokemon),
+                correctAnswer: {
+                    image,
+                    name: firstPokemon.name
+                }
+            }
 
             return res.status(200).json(result);
         } catch (error) {
