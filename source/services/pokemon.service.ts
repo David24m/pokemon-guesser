@@ -20,4 +20,12 @@ export class PokemonService {
         
         return shuffled;
       }
+
+    public getFourRandomPokemon(randomPokemonList: any) {
+        return randomPokemonList.splice(0, 4);
+    }
+
+    public getPokemonPicture({url}) {
+        
+    }
 }
