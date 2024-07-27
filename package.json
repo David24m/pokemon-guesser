@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon source/server.ts",
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "start": "ts-node-dev --inspect --respawn --files source/app.local.ts"
+    "start": "npx ts-node source/app.local.ts"
   },
   "author": "David Mulligan",
   "license": "ISC",
