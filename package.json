@@ -4,7 +4,8 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "start": "npx ts-node src/app.local.ts"
+    "start": "npx ts-node src/app.local.ts",
+    "test": "jest"
   },
   "author": "David Mulligan",
   "license": "ISC",
@@ -20,11 +21,15 @@
     "logger": "^0.0.1",
     "morgan": "^1.10.0",
     "pino": "^9.3.2",
+    "ts-jest": "^29.2.3",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.114",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
