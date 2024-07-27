@@ -1,11 +1,10 @@
 {
   "name": "pokemon_guesser",
   "version": "1.0.0",
-  "main": "source/index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon source/server.ts",
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "start": "npx ts-node source/app.local.ts"
+    "start": "npx ts-node src/app.local.ts"
   },
   "author": "David Mulligan",
   "license": "ISC",

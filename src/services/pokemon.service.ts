@@ -1,3 +1,4 @@
+import { POKEMON_API } from "../constants/urls";
 import { FullPokemonList } from "../interfaces/full.pokemon.list";
 
 const logger = require('../logger');
@@ -8,7 +9,7 @@ export class PokemonService {
     }
 
     public async getPokemonList(): Promise<FullPokemonList> {
-        const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+        const res = await fetch(POKEMON_API);
         const pokemon = await res.json();
 
         return pokemon.results;
