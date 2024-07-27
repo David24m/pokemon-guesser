@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Swagger Pokemon Game
+  description: |-
+    This is a swagger for the pokemon guessing game
+  contact:
+    email: fmu2174304@hotmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.1
+paths:
+  /v1/pokemonlist:
+    get:
+      summary: get four pokemon and image
+
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'          
+        '400':
+          description: Invalid request
+        '404':
+          description: List not found
+        '422':
+          description: Validation exception
+
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        fourPokemon:
+          type: array
+          items: 
+            $ref: '#/components/schemas/pokemon'
+        correctAnswer:
+          type: object
+          properties:
+            image:
+              type: string
+              example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png'
+            name:
+              type: string
+              example: 'squirtle'
+    pokemon:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'squirtle'
+        url:
+          type: string
+          example: 'https://pokeapi.co/api/v2/pokemon/7/'
+
