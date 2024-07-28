@@ -50,8 +50,6 @@ describe('getPokemonNumber', () => {
 
         const result = pokemonService.getPokemonNumber(`https://pokeapi.co/api/v2/pokemon/109/`)
 
-        console.log(result);
-
         expect(result).toBeDefined();
         expect(result).toEqual('109')
     })
