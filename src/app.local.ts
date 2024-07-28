@@ -1,8 +1,6 @@
-const logger = require('./logger');
 import http from 'http';
 import express, { Express } from 'express';
 import pokemonRouter from './routes/pokemon.router';
-
 
 const router: Express = express();
 

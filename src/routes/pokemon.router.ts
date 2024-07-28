@@ -15,16 +15,22 @@ pokemonRouter.get('/pokemonlist', ( async (
     ) => {
         logger.info('recieved request for pokemon list');
         try {
+            logger.info('making request to API for full pokemon list')
             const pokemon: FullPokemonList = await pokemonService.getPokemonList()
 
+            logger.info('shuffling full list of pokemon')
             const shuffledPokemonList: FullPokemonList = await pokemonService.shuffledPokemon(pokemon);
 
+            logger.info('selecting 4 pokemon from the full list for the game')
             const fourPokemon: FullPokemonList = await pokemonService.getFourRandomPokemon(shuffledPokemonList);
 
+            logger.info('select the one pokemon who will be the correct answer')
             const [ firstPokemon ] = fourPokemon;
 
+            logger.info('get the image of the correct answer pokemon')
             const image: string = pokemonService.getPokemonPicture(firstPokemon)
 
+            logger.info('create response object')
             const result: QuizResponse = {
                 fourPokemon: pokemonService.shuffledPokemon(fourPokemon),
                 correctAnswer: {

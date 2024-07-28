@@ -3,8 +3,6 @@ import configureServerlessExpress from '@vendia/serverless-express';
 import serverlessExpress from '@vendia/serverless-express';
 import type { Application } from 'express';
 import type { APIGatewayEvent, Context } from 'aws-lambda';
-const logger = require('morgan');
-
 
 type App = Application;
 
